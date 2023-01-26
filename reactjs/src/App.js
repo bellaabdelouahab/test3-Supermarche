@@ -22,11 +22,11 @@ function App() {
   const [RevenuBrut, setRevenuBrut] = useState({ labels: [], values: [] });
 
   useEffect(() => {
-    return () => {
+   
       const labels = [];
       const values = [];
       axios
-        .get(process.env.REACT_APP_API_URI+"/revenuebrut")
+        .get("http://localhost:5000/api/revenuebrut")
         .then((res) => {
           res.data.forEach((e) => {
             console.log(e);
@@ -36,7 +36,7 @@ function App() {
           });
         })
         .catch((err) => console.log(err));
-    };
+
   }, []);
 
   //  ======================================= AchatsPage ===========================================
@@ -47,11 +47,11 @@ function App() {
   }); // [Female,Male]
 
   useEffect(() => {
-    return () => {
+
       const countMembre = [];
       const countNormal = [];
       axios
-        .get(process.env.REACT_APP_API_URI+"/achats")
+        .get("http://localhost:5000/api/achats")
         .then((res) => {
           res.data.forEach((e) => {
             console.log(e);
@@ -76,24 +76,22 @@ function App() {
         })
         .catch((err) => console.log(err));
       setAchats({ countMembre, countNormal });
-    };
   }, []);
 
   // ======================================= RATING PAGE =========================================
   const [Rating, setRating] = useState({ labels: [], values: [] });
 
   useEffect(() => {
-    return () => {
+
       const labels = [];
       const values = [];
-      axios.get(process.env.REACT_APP_API_URI+"/rating").then((res) => {
+      axios.get("http://localhost:5000/api/rating").then((res) => {
         res.data.forEach((e) => {
           labels.push(e._id); //insertion des noms de labels
           values.push(e.avgrating); //insertion des valeurs de chaque labels
           setRating({ labels, values });
         });
       });
-    };
   }, []);
 
   return (
