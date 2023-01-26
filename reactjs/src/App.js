@@ -26,7 +26,7 @@ function App() {
       const labels = [];
       const values = [];
       axios
-        .get("http://localhost:5000/api/revenuebrut")
+        .get(process.env.REACT_APP_API_URI+"/revenuebrut")
         .then((res) => {
           res.data.forEach((e) => {
             console.log(e);
@@ -51,7 +51,7 @@ function App() {
       const countMembre = [];
       const countNormal = [];
       axios
-        .get("http://localhost:5000/api/achats")
+        .get(process.env.REACT_APP_API_URI+"/achats")
         .then((res) => {
           res.data.forEach((e) => {
             console.log(e);
@@ -85,7 +85,7 @@ function App() {
 
       const labels = [];
       const values = [];
-      axios.get("http://localhost:5000/api/rating").then((res) => {
+      axios.get(process.env.REACT_APP_API_URI+"/rating").then((res) => {
         res.data.forEach((e) => {
           labels.push(e._id); //insertion des noms de labels
           values.push(e.avgrating); //insertion des valeurs de chaque labels
