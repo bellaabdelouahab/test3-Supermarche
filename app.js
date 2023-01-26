@@ -7,7 +7,10 @@ const app = express();
 
 // ============= middlewares ==================
 
-app.use( cors() ); // controler l'acces a l'API
+app.use( cors({
+  origin: "*",
+    credentials: true,
+}) ); // controler l'acces a l'API
 
 app.use('/api', venteRoutes) //Routes de vente
 
